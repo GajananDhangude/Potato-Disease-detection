@@ -4,8 +4,22 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:5173",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = origins,
+    allow_credentials=True,
+    allow_methods = ["*"],
+    allow_headers = ["*"]
+)
 
 MODEL = tf.keras.models.load_model("..\saved_model\potatoes.h5")
 CLASS_NAMES = ['Early_Blight' , 'Late Blight' , 'Healthy']
