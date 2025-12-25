@@ -36,6 +36,24 @@ const PredictionUI = () => {
     }
   };
 
+  const diseaseUI = {
+  Healthy: {
+    color: "green",
+    badge: "Healthy Leaf",
+    message: "No disease detected. Your crop looks healthy 🌱",
+  },
+  "Early Blight": {
+    color: "yellow",
+    badge: "Early Stage Disease",
+    message: "Early signs detected. Treat early to prevent spread.",
+  },
+  "Late Blight": {
+    color: "red",
+    badge: "Severe Disease",
+    message: "Critical disease detected. Immediate action required.",
+  },
+};
+
   return (
     <section className="bg-[#f9fbf7] py-24 px-4">
 
@@ -44,15 +62,15 @@ const PredictionUI = () => {
     AI DISEASE DETECTION
   </span>
 
-  <h2 className="mt-4 text-3xl md:text-4xl font-extrabold text-gray-800">
+    <h2 className="mt-4 text-3xl md:text-4xl font-extrabold text-gray-800">
     Analyze Potato Leaf Health
-  </h2>
+    </h2>
 
-  <p className="mt-3 text-gray-600 max-w-xl mx-auto">
+    <p className="mt-3 text-gray-600 max-w-xl mx-auto">
     Upload a potato leaf image and let our AI instantly detect diseases
     with high accuracy.
-  </p>
-</div>
+        </p>
+    </div>
 
       <div className="max-w-3xl mx-auto">
 
