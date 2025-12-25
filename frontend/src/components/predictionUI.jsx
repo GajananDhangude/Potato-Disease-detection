@@ -36,23 +36,6 @@ const PredictionUI = () => {
     }
   };
 
-  const diseaseUI = {
-  Healthy: {
-    color: "green",
-    badge: "Healthy Leaf",
-    message: "No disease detected. Your crop looks healthy 🌱",
-  },
-  "Early Blight": {
-    color: "yellow",
-    badge: "Early Stage Disease",
-    message: "Early signs detected. Treat early to prevent spread.",
-  },
-  "Late Blight": {
-    color: "red",
-    badge: "Severe Disease",
-    message: "Critical disease detected. Immediate action required.",
-  },
-};
 
   return (
     <section className="bg-[#f9fbf7] py-24 px-4">
@@ -145,44 +128,27 @@ const PredictionUI = () => {
         )}
 
         {/* Result */}
-        {result && (() => {
-  const ui = diseaseUI[result.class] || diseaseUI["Early Blight"];
+        {result && (
+          <div className="mt-10 bg-white rounded-2xl p-8 border border-green-200 shadow-md text-center">
+            <h3 className="text-xl font-bold text-green-600">
+              Detection Result
+            </h3>
 
-  return (
-    <div className="mt-12 bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-      
-      {/* Badge */}
-      <div className={`inline-block px-4 py-1.5 rounded-full
-        bg-${ui.color}-100 text-${ui.color}-700 text-sm font-semibold mb-4`}>
-        {ui.badge}
-      </div>
+            <p className="mt-4 text-lg text-gray-800">
+              Disease Detected:
+              <span className="font-semibold text-red-500 ml-2">
+                {result.class}
+              </span>
+            </p>
 
-      <h3 className="text-2xl font-bold text-gray-800">
-        {result.class}
-      </h3>
-
-      <p className="mt-2 text-gray-600">
-        {ui.message}
-      </p>
-
-      {/* Confidence Bar */}
-      <div className="mt-6">
-        <div className="flex justify-between text-sm text-gray-600 mb-1">
-          <span>Confidence</span>
-          <span>{result.confidence}%</span>
-        </div>
-
-        <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div
-            className={`h-3 bg-${ui.color}-500 transition-all duration-700`}
-            style={{ width: `${result.confidence}%` }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-})()}
-
+            <p className="mt-2 text-gray-600">
+              Confidence:
+              <span className="font-semibold ml-2">
+                {result.confidence}%
+              </span>
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
