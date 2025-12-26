@@ -2,7 +2,6 @@ import React from 'react'
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Hero from './components/Hero'
 import Navbar from './components/Navbar.jsx'
 import HowItWorks from './components/HowItWorks.jsx';
 
