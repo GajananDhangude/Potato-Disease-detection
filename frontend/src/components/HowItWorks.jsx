@@ -25,38 +25,38 @@ const HowItWorks = () => {
   return (
     <section
       id="features"
-      className="bg-[#f9fbf7] py-24 px-4"
+      className="py-24 px-4"
     >
       <div className="max-w-6xl mx-auto text-center">
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-green-600">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-emerald-800 section-title">
           How It Works
         </h2>
 
-        <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        <p className="mt-4 text-emerald-900/70 max-w-2xl mx-auto">
           Detect potato plant diseases in three simple steps using AI-powered
           image analysis.
         </p>
 
         {/* Steps */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 hover: shadow-green-800 ">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-8 border border-green-100 shadow-sm hover:shadow-md transition"
+                className="glass-card rounded-3xl p-8 border border-emerald-100 hover:shadow-lg transition"
               >
-                <div className="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-green-100 text-green-600">
+                <div className="w-14 h-14 mx-auto flex items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
                   <Icon size={26} />
                 </div>
 
-                <h3 className="mt-6 text-lg font-semibold text-gray-800">
+                <h3 className="mt-6 text-lg font-semibold text-emerald-900">
                   {step.title}
                 </h3>
 
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                <p className="mt-2 text-sm text-emerald-900/70 leading-relaxed">
                   {step.description}
                 </p>
               </div>

@@ -1,1 +1,50 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+	color-scheme: light;
+	--bg: #f7fbf2;
+	--bg-strong: #eef6e6;
+	--text: #132a13;
+	--muted: #4b6652;
+	--accent: #3bb273;
+	--accent-strong: #2f9e62;
+	--card: #ffffff;
+	--ring: rgba(59, 178, 115, 0.35);
+}
+
+body {
+	margin: 0;
+	font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(1200px 600px at 10% 5%, #e7f6df 0%, transparent 60%),
+		radial-gradient(900px 500px at 90% 10%, #e0f3ea 0%, transparent 55%),
+		linear-gradient(180deg, var(--bg) 0%, #ffffff 60%, #f4f9ef 100%);
+	min-height: 100vh;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.font-display {
+	font-family: "Fraunces", "Times New Roman", serif;
+	letter-spacing: -0.01em;
+}
+
+.glass-card {
+	background: rgba(255, 255, 255, 0.75);
+	border: 1px solid rgba(190, 230, 202, 0.7);
+	box-shadow: 0 20px 60px rgba(26, 63, 45, 0.12);
+	backdrop-filter: blur(18px);
+}
+
+.section-title {
+	text-wrap: balance;
+}
+
+.focus-ring {
+	outline: none;
+	box-shadow: 0 0 0 3px var(--ring);
+}

@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
-MODEL = tf.keras.models.load_model("..\saved_model\potatoes.h5")
+MODEL = tf.keras.models.load_model("saved_model/potatoes.h5")
 CLASS_NAMES = ['Early_Blight' , 'Late Blight' , 'Healthy']
 
 @app.get("/ping")
