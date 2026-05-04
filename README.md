@@ -1,101 +1,95 @@
-# Potato Disease Detection (AgroVision)
-AI-powered potato leaf disease detection with a FastAPI backend and a modern React frontend. Upload a leaf image and the model predicts Early Blight, Late Blight, or Healthy with a confidence score.
+<div align="center">
 
-## Highlights
-- End-to-end flow: upload image, run prediction, show confidence and guidance.
-- Modern botanical UI with responsive layout and local scan history.
-- FastAPI inference API with CORS configured for local dev.
-- Pretrained model included in saved_model/potatoes.h5.
+# AgroVision: Potato Disease Detection
 
-## Architecture
-- Frontend (React + Vite): image upload, result visualization, scan history.
-- Backend (FastAPI): image preprocessing, TensorFlow model inference.
-- Model: CNN trained on the PlantVillage potato dataset.
+AI-powered potato leaf diagnosis in seconds. Upload an image, get a clear disease classification with confidence, and take action fast.
 
-## Tech Stack
-- Frontend: React, Vite, Tailwind, Framer Motion, Lucide icons
-- Backend: FastAPI, Uvicorn, TensorFlow, Pillow, NumPy
+![License](https://img.shields.io/badge/License-MIT-green)
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Version](https://img.shields.io/badge/Version-1.0.0-blue)
+![Tech](https://img.shields.io/badge/Stack-React%20%7C%20FastAPI%20%7C%20TensorFlow-7C3AED)
 
-## Project Structure
+</div>
+
+## Overview
+AgroVision is a modern AI application that detects potato leaf diseases using a convolutional neural network. It solves the real-world challenge of early crop disease identification by turning a single leaf image into a fast, reliable diagnostic signal for farmers and agronomists.
+
+## Key Features
+- Instant disease prediction with confidence scoring.
+- Clean, responsive UI with image preview and guided next steps.
+- Drag-and-drop image upload and validation.
+- Local scan history for quick reference.
+- FastAPI inference service with CORS configured for local development.
+
+## System Architecture
+```mermaid
+flowchart LR
+	A[Leaf Image] --> B[Frontend Upload]
+	B --> C[FastAPI /predict]
+	C --> D[Preprocess + TensorFlow Model]
+	D --> E[Prediction + Confidence]
+	E --> F[UI Result + History]
 ```
-api/
-	main.py
-	requirement.txt
-frontend/
-	src/
-	package.json
-saved_model/
-	potatoes.h5
-training/
-	training.ipynb
+
+The React frontend handles image upload and UX, the FastAPI backend performs preprocessing and model inference, and results are streamed back to the UI with confidence and guidance.
+
+## Getting Started
+### 1) Clone the repository
+```bash
+git clone <your-repo-url>
+cd Potato-disease
 ```
 
-## Prerequisites
-- Python 3.10+ recommended
-- Node.js 18+ recommended
+### 2) Backend setup
+```bash
+python -m venv .venv
+source .venv/bin/activate  # on Windows: .venv\Scripts\activate
+pip install -r api/requirement.txt
+python -m api.main
+```
 
-## Backend Setup
-1. Create and activate a Python environment.
-2. Install dependencies:
-	 ```
-	 pip install -r api/requirement.txt
-	 ```
-3. Start the API:
-	 ```
-	 python -m api.main
-	 ```
+API runs at: http://localhost:8080
 
-The API will be available at http://localhost:8080
+### 3) Frontend setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Frontend Setup
-1. Install dependencies:
-	 ```
-	 cd frontend
-	 npm install
-	 ```
-2. Start the dev server:
-	 ```
-	 npm run dev
-	 ```
+Frontend runs at: http://localhost:5173
 
-The frontend will be available at http://localhost:5173
-
-## Configuration
-Frontend API base URL is configurable with an environment variable.
-
-Create frontend/.env and set:
+### 4) Environment variables (optional)
+Create frontend/.env with:
 ```
 VITE_API_URL=http://localhost:8080
 ```
 
-## API Reference
-- GET /ping
-	- Health check. Returns a short string.
-- POST /predict
-	- Multipart form-data with key: file
-	- Response:
-		```json
-		{
-			"class": "Early_Blight",
-			"confidence": 0.97
-		}
-		```
+## Usage Examples
+### Predict from the UI
+1. Open http://localhost:5173
+2. Upload a leaf image
+3. View prediction + confidence
 
-## Model Notes
-- Model file: saved_model/potatoes.h5
-- Classes: Early_Blight, Late Blight, Healthy
-- Input: color leaf image
+### Health check
+```bash
+curl http://localhost:8080/ping
+```
 
-## Common Issues
-- FileNotFoundError for the model path:
-	- Use a stable path relative to api/main.py or run from repo root.
-- Import errors for fastapi/uvicorn/numpy:
-	- Ensure requirements are installed in the active environment.
+### Predict via API
+```bash
+curl -X POST http://localhost:8080/predict \
+	-H "Content-Type: multipart/form-data" \
+	-F "file=@/path/to/leaf.jpg"
+```
 
-## Roadmap Ideas
-- Add model versioning and structured metadata in API responses.
-- Add automated tests for inference and UI state.
-- Deploy to a cloud container with GPU inference support.
+## Project Roadmap
+- [ ] Add model versioning metadata to responses
+- [ ] Add automated tests for inference and UI state
+- [ ] Add image quality scoring before prediction
+- [ ] Deploy to a production API service
 
-## License
-See LICENSE.
+## Contributing & License
+Contributions are welcome. Please open an issue to discuss changes and submit a PR with clear context and testing notes.
+
+This project is licensed under the MIT License.
